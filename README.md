@@ -18,7 +18,7 @@ A ready-to-install package is located in the `dist` directory.
    * On Linux, it is located in `~/.config/sublime-text-3`
    * On OS X, it is located in `~/Library/Application Support/Sublime Text 3`
 3. In the data directory, place the package `OpenEdge ABL.sublime-package` in the `Installed Packages` directory.
-4. In the data directory, delete the `Cache/OpenEdge ABL` directory
+4. In the data directory (but in `%LOCALAPPDATA%\Sublime Text 3` in Windows!), delete the `Cache/OpenEdge ABL` directory
 5. Restart Sublime Text
 6. You may need to open each progress file type (.p, .cls, .i, .w...) and associate them with the new syntax scheme:
    `View > Syntax > Open all with current extension as... > OpenEdge ABL`
