@@ -1,6 +1,6 @@
 # Progress ABL 4GL support for Sublime Text 3
 
-By GabSoftware
+By [GabSoftware](www.gabsoftware.com)
 
 ## Building
 
@@ -30,3 +30,7 @@ It is possible to get the "Check Syntax" feature of OpenEdge working in Sublime 
 4. Modify it to reflect your configuration
 5. Restart Sublime Text
 6. You can now check the syntax of Progress ABL source files by hitting CTRL + B
+
+## Notes
+
+This product is not supported by Progress.
