@@ -24,14 +24,15 @@ If you want to add support for [Progress](http://www.progress.com/) ABL 4GL in [
 
 ## "Check Syntax" support
 
-It is possible to get the "Check Syntax" feature of OpenEdge working in Sublime Text. To do so, you can use the provided `syntax.p` and `ABL.sublime-build` files :
+It is possible to get the "Check Syntax" feature of OpenEdge working in Sublime Text. To do so, you can use the provided files in the `CheckSyntax` directory :
 
 1. Close Sublime Text
-2. Place the `syntax.p` file in a directory, for example `C:\syntax`
-3. Copy the file `ABL.sublime-build.example` and paste it as `ABL.sublime-build` in the data directory, in `Packages\User`
-4. Modify it to reflect your configuration
-5. Restart Sublime Text
-6. You can now check the syntax of Progress ABL source files by hitting CTRL + B
+2. Place the `syntax.p` file in a directory or your choice, for example `C:\syntax`
+3. Copy the files `ABL.sublime-build.example` and `ABL.sublime-settings` and paste them in the data directory, in `Packages\User`
+4. Rename `ABL.sublime-build.example` to `ABL.sublime-build`
+5. Modify `ABL.sublime-build` to reflect your configuration
+6. Restart Sublime Text
+7. You can now check the syntax of Progress ABL source files by hitting CTRL + B
 
 ## Notes
 
