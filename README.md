@@ -28,11 +28,10 @@ It is possible to get the "Check Syntax" feature of OpenEdge working in Sublime 
 
 1. Close Sublime Text
 2. Place the `syntax.p` file in a directory, for example `C:\syntax`
-3. Copy the files `ABL.sublime-build.example` and `ABL.sublime-settings`and paste them in the data directory, in `Packages\User`
-4. Rename the file `ABL.sublime-build.example` to `ABL.sublime-build`
-5. Modify it to reflect your configuration
-6. Restart Sublime Text
-7. You can now check the syntax of Progress ABL source files by hitting CTRL + B
+3. Copy the file `ABL.sublime-build.example` and paste it as `ABL.sublime-build` in the data directory, in `Packages\User`
+4. Modify it to reflect your configuration
+5. Restart Sublime Text
+6. You can now check the syntax of Progress ABL source files by hitting CTRL + B
 
 ## Notes
 
