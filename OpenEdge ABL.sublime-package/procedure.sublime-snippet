@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[
+PROCEDURE ${1:name} :
+
+END PROCEDURE.
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>procedure</tabTrigger>
+	<tabTrigger>proc</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+
+	<description>Insère une PROCEDURE vide</description>
+</snippet>

@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[
+DEFINE TEMP-TABLE tt_${1:TTName}
+
+	SERIALIZE-NAME "${1:TTName}"
+
+    FIELD ${2:ID} AS INTEGER
+
+    INDEX PID1 IS UNIQUE PRIMARY ${2:ID}
+.
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>def tt</tabTrigger>
+	<tabTrigger>dtt</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+
+	<description>Insère une TEMP-TABLE</description>
+</snippet>

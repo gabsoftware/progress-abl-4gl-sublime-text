@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+DEFINE VARIABLE lc_${1:VarName} AS LONGCHAR NO-UNDO.
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>defvar longchar</tabTrigger>
+	<tabTrigger>dvlc</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.Progress\ ABL</scope> -->
+
+	<description>Insère une variable de type LONGCHAR</description>
+</snippet>

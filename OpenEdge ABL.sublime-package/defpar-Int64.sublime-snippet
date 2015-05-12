@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+DEFINE ${1:INPUT} PARAMETER pr_in64_${2:name} AS INT64 NO-UNDO.
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>defpar int64</tabTrigger>
+	<tabTrigger>dp64</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.Progress\ ABL</scope> -->
+
+	<description>Insère un paramètre de type INT64</description>
+</snippet>

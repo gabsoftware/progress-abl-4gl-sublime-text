@@ -1,0 +1,17 @@
+{
+    "name": "Comments", 
+    "scope": "source.abl", 
+    "settings": {
+        "shellVariables": [
+            {
+                "name": "TM_COMMENT_START", 
+                "value": "/* "
+            }, 
+            {
+                "name": "TM_COMMENT_END", 
+                "value": " */"
+            }
+        ]
+    }, 
+    "uuid": "3bcebd60-f6cc-404f-930a-528f32956502"
+}

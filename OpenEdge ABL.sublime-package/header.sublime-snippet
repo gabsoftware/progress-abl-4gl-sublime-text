@@ -1,0 +1,37 @@
+<snippet>
+	<content><![CDATA[
+/*============================================================================*/
+/* Programme     : $TM_FILENAME                                               */
+/* Description   : ${1:description}                                                */
+/* Date creation : ${2:dd/mm/aaaa}                                                 */
+/* Auteur        : $TM_FULLNAME                       2eme Lecture : Aucune               */
+/*                                                                            */
+/* Date Modif    : ${3:dd/mm/aaaa}                                                 */
+/*                                                                            */
+/*============================================================================*/
+
+
+/* =============================== Paramètres =============================== */
+
+
+/* =============================== Variables  =============================== */
+
+
+/* ============================== Temp-tables  ============================== */
+
+
+/* ================================ Includes ================================ */
+
+
+/* =============================== Fonctions  =============================== */
+
+
+/* ========================== Programme principal  ========================== */
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>header</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.abl</scope>
+
+	<description>Insère une entête de fichier</description>
+</snippet>

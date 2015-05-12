@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[
+MESSAGE '${1:yourTag}' '${2:additionalInfo}' ${3} VIEW-AS ALERT-BOX.
+$0
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>debugMessage</tabTrigger>
+	<tabTrigger>mess</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.Progress\ ABL</scope> -->
+
+	<description>Insère un message</description>
+</snippet>

@@ -1,0 +1,4 @@
+{
+  "shell_cmd": "C:\\Progress\\102B\\bin\\_progres.exe -1 -b -pf C:\\Progress\\102B\\startup.pf -p C:\\path\\to\\syntax.p -param \"$file\"",
+  "file_regex": "^(?:ERROR|WARNING]) File:'(.+)' Row:([0-9]+) Col:([0-9]+) Error:[0-9]+ Message:(.*)$"
+}

@@ -1,0 +1,529 @@
+{
+  "name": "OpenEdge ABL",
+  "scopeName": "source.abl",
+  "fileTypes": ["p","i","cls","fct","def","ds"],
+  "patterns": [
+    {
+      "match": "comment:",
+      "name": "comment.testing"
+    },
+    {
+      "comment": "regular comment block.  todo - require space when compile, if yes then change to not highlight",
+      "begin": "/\\*",
+      "end": "\\*/",
+      "name": "comment.block.source.abl",
+      "patterns": [
+        {
+          "begin": "/\\*",
+          "end": "\\*/",
+          "name": "comment.block.source.abl"
+        }
+      ]
+    },
+
+    {
+      "match": "constant:",
+      "name": "constant.testing"
+    },
+    { "include": "#constantHTMLColors" },
+    { "include": "#constantNumbers" },
+    {
+      "comment": "boolean conditions.",
+      "match": "(?i)\\s(=|eq|<|lt|>|gt|<=|le|>=|ge|<>)\\s",
+      "name": "constant.character.source.abl"
+    },
+    {
+      "comment": "math operators.",
+      "match": "(\\+|\\-|\\*|/)",
+      "name": "constant.character.math.operator.source.abl"
+    },
+    {
+      "comment": "constants - operators - simple list. ",
+      "match": "(?i)\\b(and|as|false|no(?!-)|not|of|on|or|to|true|yes)\\b",
+      "name": "constant.language.source.abl"
+    },
+
+    {
+      "name": "entity.testing",
+      "match": "entity:"
+    },
+    {
+      "comment": "constructor/destructor method",
+      "match": "(?i)(constructor|destructor)\\s+((private|protected|public)\\s+)?([a-z]+)",
+      "name": "meta.function.source.abl",
+      "captures": {
+        "1": { "name": "entity.name.function.abl" },
+        "2": { "name": "storage.modifier.abl" },
+        "3": { "name": "storage.modifier.abl" },
+        "4": { "name": "entity.name.hidden.abl"}
+              }
+    },
+    {
+      "comment": "function",
+      "match": "(?i)(function)\\s+([a-z0-9_-]+)\\s+(returns)\\s+(char(?:acter)?|datetime-tz|datetime|date|decimal|int(?:eger)?|int64|logical|longchar|memptr)(\\s+)?(\\(|\\n)",
+      "name": "meta.function.source.abl",
+      "captures": {
+        "1": { "name": "keyword.control.source.abl" },
+        "2": { "name": "entity.name.function.abl" },
+        "3": { "name": "keyword.other.source.abl" },
+        "4": { "name": "storage.type.datatype.abl" }
+      }
+    },
+    {
+      "comment": "main block",
+      "match": "(?i)(main(\\-)?block):",
+      "name": "meta.function.source.abl",
+      "captures": {
+        "1": { "name": "entity.name.function.abl"}
+      }
+    },
+    {
+      "comment": "method",
+      "begin": "(?i)(method)\\s+(override|private|protected|public)\\s+([a-zA-Z0-9.]+)\\s+([a-zA-Z]+)",
+      "beginCaptures": {
+        "1": { "name": "keyword.control.source.abl" },
+        "2": { "name": "storage.modifier.abl" },
+        "3": { "name": "storage.type.datatype.abl" },
+        "4": { "name": "entity.name.function.abl" }
+      },
+      "patterns": [
+        { "include": "#constantNumbers" },
+        { "include": "#dataTypes" },
+        { "include": "#defineKeywords" },
+        { "include": "#fileField" },
+        { "include": "#keywordAsLike" },
+        { "include": "#variableNames" }
+      ],
+      "end": "\\):"
+    },
+    {
+      "comment": "procedure",
+      "match": "(?i)(procedure)\\s+([a-z0-9\\/_-]+)(:|\\(|\\n)",
+      "name": "meta.function.source.abl",
+      "captures": {
+        "1": { "name": "keyword.control.source.abl" },
+        "2": { "name": "entity.name.function.abl" }
+      }
+    },
+
+    {
+      "match": "exception:",
+      "name": "support.type.exception.testing"
+    },
+
+    {
+      "match": "invalid:",
+      "name": "invalid.testing"
+    },
+
+    {
+      "match": "keyword:",
+      "name": "keyword.testing"
+    },
+    {
+      "comment": "Accumulate keywords",
+      "match": "(?i)\\b(accumulate|accum|averate|count|maximum|minimum|total|sub-average|sub-count|sub-maximum|sub-minimum|sub-total|lable|by)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "Case keywords",
+      "match": "(?i)\\b(|case|when|otherwise)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "ends keywords.",
+      "match": "(?i)(end)(\\s+(case|class|constructor|destructor|finally|function|interface|method|procedure))?\\.",
+      "captures": {
+        "1": {"name": "keyword.control.end.source.abl"},
+        "2": {"name": "keyword.control.end.source.abl"}
+      }
+    },
+    {
+      "comment": "Find & For keywords",
+      "match": "(?i)\\b(can-find(\\((first|last|prev))?|find\\s+(first|last|prev)?|for\\s+(each|first|last)|by|descending|exclusive-lock|exclusive|no-lock|no-wait|of|share-lock|transaction|use-index|using|where|while)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "format & frame keywords",
+      "match": "(?i)\\b(as|attr-space|auto-return|bgcolor|blank|cancel-button|centered|colon|column-label|columns|column|context-help|context-help-file|dcolor|deblank|default-buttone|disable-auto-zap|down|fgcolor|font|format|frame|help|keep-tab-order|label|like|no-attr-space|no-box|no-help|no-hide|no-labels|no-tab-stop|no-underline|no-validate|overlay|page-bottom|page-top|pfcolor|retain|row|screen-id|stream-io|scrollable|scroll|side-labels|skip|stream|three-d|top-only|to|use-dect-exps|use-text|v6frame|validate|view-as dialog-box|width|with)\\b",
+      "name": "keyword.other.frames.source.abl"
+    },
+    {
+      "comment": "message keywords",
+      "match": "(?i)\\b(message|auto-return|buttons|color|in window|set|skip|title|update|view-as alert-box)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "on block keywords",
+      "match": "(?i)\\b(on|endkey|error|quit|stop|anywhere|leave|next|no-apply|override|persistent run|retry|return|revert|undo)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "output keywords",
+      "match": "(?i)\\b(output|append|binary|close|collate|convert|echo|keep-messages|landscape|map|no-convert|no-echo|no-map|num-copies|paged|page-size|portrait|printer|stream|terminal|through|to|unbuffered|value)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "put keywords",
+      "match": "(?i)\\b(put|attr-space|color|column|control|cursor|format|no-attr-space|off|row|skip|screen|stream|unformatted)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "Other keywords - A - B",
+      "match": "(?i)\\b(absolute|add-interval|alias|ambiguous|apply|asc|assign|at|available|begins|bell|browse|buffer)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "Other keywords - C",
+      "match": "(?i)\\b(call|can-do|can-query|can-set|caps|cast|catch|class|choose|chr|clear|close|codepage-convert|color|combo-box|compare|compile|save|connect|connected|count-of|create|current-changed|current-language|current-result-row|current-value)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "Other keywords - D",
+      "match": "(?i)\\b(dataservers|datetime-tz|datetime|date|daydbcodepage|dbcollation|dbname|dbparam|dbrestrictions|dbtaskid|dbtype|dbversion|decimal|delete|delimiter|dictionary|disable|disconnect|display|do|down|dynamic-function|dynamic-new)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "Other keywords - E - F",
+      "match": "(?i)\\b(editing|editor|empty temp-table|enable|encode|entered|entry|etime|exp|export|extent|fill|finally|final|first-of|first|form)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "Other keywords - G",
+      "match": "(?i)\\b(gateways|get|get-bits|get-byte|get-byte-order|get-bytes|get-codepages|get-collations|get-double|get-float|get-key-value|get-long|get-pointer-value|get-short|get-size|get-string|get-unsigned-short|go-pending)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "Other keywords - H - I",
+      "match": "(?i)\\b(hex-encode|hide|if|then|else|image|implements|import|index|inherits|input\\s+(clear|close|from|through)?|insert|integer|interface|interval|is-attr-space|is-lead-byte)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "Other keywords - K - L",
+      "match": "(?i)\\b(kblabel|keycode|keyfunction|keylable|keyword|keyword-all|last|lastkey|last-of|lc|ldbname|leave|left-trim|length|library|lin-counter|list-(events|query-attrs|set-attrs|widgets)|load|load-picture|locked|log|lookup)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "Other keywords - M - N",
+      "match": "(?i)\\b(matches|maximum|max|md5-digest|member|message-lines|minimum|modulo|month|new|next|next-prompt|next-value|num-aliases|num-dbs|num-entries|num-results)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "Other keywords - O",
+      "match": "(?i)\\b(open query|opsys|os-(append|command|copy|create-dir|delete|drives|error|getenv|rename)|overlay)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "Other keywords - P",
+      "match": "(?i)\\b(page|page-number|page-size|pause|pdbname|preselect|proc-handle|proc-status|process events|program-name|projpt-for|promsgs|propath|proversion|publsih|put cursor|put screen|put-(bits|bytes|byte|double|float|key-value|long|short|string|unsigned-short))\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "Other keywords - U",
+      "match": "(?i)\\b(use-widget-pool|using)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "class keywords.",
+      "match": "(?i)\\b(super)\\b",
+      "name": "keyword.other.class.source.abl"
+    },
+    {
+      "comment": "control keywords.",
+      "match": "(?i)\\b(repeat|return|then|transaction:?|when)\\b",
+      "name": "keyword.control.source.abl"
+    },
+    {
+      "comment": "general keywords.",
+      "match": "(?i)\\b(object|output\\s+(close|thru|through|to)|put(\\sunformatted)?|replace|routine-level|substitute|substring|throw|triggers for load of|trim|undo|update|valid-handle|valid-object)\\b",
+      "name": "keyword.other.statement.source.abl"
+    },
+    {
+      "comment": "query keywords.",
+      "match": "(?i)\\b(query|table|temp-table)\\b",
+      "name": "keyword.other.statement.source.abl"
+    },
+    {
+      "comment": "buffer attributes",
+      "match": "(?i):(adm-data|available|can-create|can-delete|can-read|can-write|current-changed|dbname|handle|locked|name|new|next-sibling|num-fields|primary|private-data|recid|record-length|rowid|table|table-handle|table-number|type|unique-id)\\b",
+      "name": "keyword.other.statement.source.abl"
+    },
+    {
+      "comment": "buffer methods",
+      "match": "(?i):(buffer-compare|buffer-copy|buffer-create|buffer-delete|buffer-field|buffer-release|empty-temp-table|find-by-rowid|index-information|raw-transfer)\\b",
+      "name": "keyword.other.statement.source.abl"
+    },
+    {
+      "comment": "buffer field attributes",
+      "match": "(?i):(adm-data|buffer-handle|buffer-name|buffer-value|can-read|can-write|case-sensitive|column-label|data-type|dbname|extent|format|handle|mandatory|name|position|private-data|read-only|string-value|table|type|unique-id|validate-expression|validate-message|width-chars)\\b",
+      "name": "keyword.other.statement.source.abl"
+    },
+    {
+      "comment": "error and error-statu attributes & methods",
+      "match": "(?i)(error-status|error|no-error|num-message|type|get-message|get-number)|(:(apperror|syserror|getMessage|numMessages|returnValue))\\b",
+      "name": "keyword.other.statement.source.abl"
+    },
+    {
+      "comment": "query attributes",
+      "match": "(?i):(adm-data|cache|current-result-row|handle|index-information|is-open|name|num-buffers|num-results|prepare-string|private-data|query-off-end|skip-deleted-record|type)\\b",
+      "name": "keyword.other.statement.source.abl"
+    },
+    {
+      "comment": "query methods",
+      "match": "(?i):(add-buffer|create-result-list-entry|delete-result-list-entry|get-buffer-handle|get-current|get-first|get-last|get-next|get-prev|set-buffers|query-close|query-open|query-prepare|reposition-backward|reposition-forward|reposition-to-row|reposition-to-rowid)\\b",
+      "name": "keyword.other.statement.source.abl"
+    },
+    {
+      "comment": "temp-table attributes & methods",
+      "match": "(?i):(default-buffer-handle|name|prepared|primary|undo|add-fields-from|add-index-field|add-like-field|add-like-index|add-new-field|add-new-index|clear|create-like|temp-table-prepare)\\b",
+      "name": "keyword.other.statement.source.abl"
+    },
+
+
+    {
+      "match": "punctuation:",
+      "name": "punctuation.string.testing"
+    },
+
+    {
+      "match": "storage:",
+      "name": "storage.testing"
+    },
+    {
+      "comment": "buffer",
+      "match": "(?i)(def(?:ine)?\\s+buffer)\\s+(b|bf)([A-Z][a-zA-Z0-9-]+)\\s+(for)\\s+([a-zA-Z0-9-]+)",
+      "captures": {
+        "1": {"name": "keyword.other.source.abl"},
+        "2": {"name": "variable.property.abl"},
+        "3": {"name": "variable.property.abl"},
+        "4": {"name": "constant.other.source.abl"},
+        "5": {"name": "text.other.source.abl"},
+        "6": {"name": "text.other.source.abl"}
+      }
+    },
+    {
+      "comment": "parameters - for functions and methods",
+      "match": "(?i)(input)\\s+(i|ip)([A-Z][a-zA-Z0-9]+)\\s+(as\\s+(char(?:acter)?|datetime-tz|datetime|date|decimal|int(?:eger)?|int64|logical|longchar|memptr)|(like)\\s+([a-zA-Z0-9-]+\\.[a-zA-Z0-9_-]+))",
+      "captures": {
+        "1": {"name": "keyword.other.source.abl"},
+        "2": {"name": "variable.other.synergy.abl"},
+        "3": {"name": "variable.other.synergy.abl"},
+        "4": {"name": "constant.other.source.abl"},
+        "5": {"name": "storage.type.source.abl"},
+        "6": {"name": "constant.other.source.abl"},
+        "7": {"name": "text.other.source.abl"}
+      }
+    },
+    {
+      "comment": "parameters - for procedures",
+      "match": "(?i)(def(?:ine)?)\\s+(input|output|input-output)\\s+(parameter)\\s+([a-z0-9\\-_]+)\\s+(as)\\s+([a-z\\-]+)(\\s*no-undo)?",
+      "captures": {
+        "1": {"name": "keyword.other.source.abl"},
+        "2": {"name": "keyword.other.source.abl"},
+        "3": {"name": "keyword.other.source.abl"},
+        "4": {"name": "variable.property.abl"},
+        "5": {"name": "keyword.other.source.abl"},
+        "6": {"name": "storage.type.source.abl"},
+        "7": {"name": "keyword.other.source.abl"}
+      }
+    },
+    {
+      "comment": "property",
+      "begin": "(?i)(def(?:ine)?\\s+property)",
+      "beginCaptures": {
+        "1": {"name": "keyword.other.source.abl"}
+      },
+      "patterns": [
+        {
+          "match": "(?i)(get)",
+          "name": "keyword.other.source.abl"
+        },
+        { "include": "#dataTypes" },
+        { "include": "#defineKeywords" },
+        { "include": "#fileField" },
+        { "include": "#keywordAsLike" },
+        { "include": "#objectStatus" },
+        { "include": "#variableNames" }
+      ],
+      "end": "(?i)(set)\\.",
+      "endCaptures": {
+        "1": {"name": "keyword.other.source.abl"}
+      }
+    },
+    {
+      "comment": "query",
+      "match": "(?i)(def(?:ine)?\\s+query)\\s+((q|qy)[A-Z][a-zA-Z0-9-]+)\\s+(for)\\s+([a-zA-Z0-9-]+)",
+      "captures": {
+        "1": {"name": "keyword.other.source.abl"},
+        "2": {"name": "variable.property.abl"},
+        "3": {"name": "variable.property.abl"},
+        "4": {"name": "constant.other.source.abl"},
+        "5": {"name": "text.other.source.abl"}
+      }
+    },
+    {
+      "comment": "stream",
+      "match": "(?i)(def(?:ine)?\\s+stream)\\s+([a-zA-Z0-9]+)\\.",
+      "captures": {
+        "1": {"name": "keyword.other.source.abl"},
+        "2": {"name": "variable.property.abl"}
+      }
+    },
+    {
+      "comment": "variable",
+      "begin": "(?i)(def(?:ine)?\\s+)(new\\s+)?(shared\\s+)?((private|protected|public)\\s+)?(var(?:iable)?)",
+      "beginCaptures": {
+        "1": {"name": "keyword.other.source.abl"},
+        "2": {"name": "keyword.other.source.abl"},
+        "3": {"name": "keyword.other.source.abl"},
+        "4": {"name": "storage.modifier.source.abl"},
+        "5": {"name": "storage.modifier.source.abl"},
+        "6": {"name": "keyword.other.source.abl"}
+      },
+      "patterns": [
+        { "include": "#constantHTMLColors" },
+        { "include": "#constantNumbers" },
+        { "include": "#dataTypes" },
+        { "include": "#defineKeywords" },
+        { "include": "#fileField" },
+        { "include": "#keywordAsLike" },
+        { "include": "#quotedStrings" },
+        { "include": "#variableNames" }
+      ],
+      "end": "\\."
+    },
+
+
+    {
+      "match": "(?i)\\b(def(?:ine)?\\s+(new\\s+)?(shared\\s+)?(temp-table|form))\\b",
+      "name": "storage.type.define.abl"
+    },
+
+    {
+      "match": "(?i)\\b(?<!&)((?<!-)handle|dataset-handle|dataset|field|(?<!-)index|frame [a-z]+)(?!\\s*\\()\\b",
+      "name": "storage.type.source.abl"
+    },
+
+    {
+      "match": "string:",
+      "name": "string.testing"
+    },
+    { "include": "#quotedStrings" },
+
+    {
+      "match": "support:",
+      "name": "support.testing"
+    },
+    {
+      "comment": "includes",
+      "match": "(?i)\\{\\s*([a-zA-Z0-9\\-_\\/\\.]+\\.i)\\s*(.*)\\s*\\}",
+      "name": "support.function.include.abl"
+    },
+    {
+      "comment": "preprocessors",
+      "match": "(?i)\\{&[a-zA-Z0-9_\\.\\/\\-\\s]+\\}",
+      "name": "support.function.source.abl"
+    },
+
+    {
+      "match": "regular text:",
+      "name": "text"
+    },
+    { "include": "#fileField" },
+
+    {
+      "match": "variable:",
+      "name": "variable.testing"
+    },
+    {
+      "comment": "paramaters - Synergy naming conventions",
+      "match": "(?i)\\b(i|ip|o|op|io)(-|[A-Z])[a-zA-Z0-9_-]+\\b",
+      "name": "variable.other.synergy.source.abl"
+    },
+    { "include": "#variableNames" },
+
+    {
+      "match": "(?i)\\b(run) ([a-z][a-z0-9_-]*?)\\b(\\s*\\(.*?\\))?",
+      "name": "support.function.abl",
+      "captures": {
+        "1": { "name": "keyword.statement.source.abl" },
+        "2": { "name": "support.function.source.abl" }
+      }
+    }
+
+
+
+
+
+
+  ],
+  "repository": {
+    "progressComment": {
+      "patterns": [
+        {
+          "begin": "/\\*",
+          "end": "\\*/",
+          "name": "comment.block.source.abl"
+        }
+      ]
+    },
+    "constantNumbers": {
+      "comment": "numbers only - not for hex codes which never show up in ABL",
+      "match": "\\b\\d+\\b",
+      "name": "constant.numeric.source.abl"
+    },
+    "constantHTMLColors": {
+      "comment": "html colors",
+      "match": "#[0-9a-fA-F]{6}",
+      "name": "constant.numeric.source.abl"
+    },
+    "dataTypes": {
+      "comment": "data types - ABL specific",
+      "match": "(?i)\\b(blob|char(?:acter)?|clob|datetime-tz|datetime|date|decimal|handle|int(?:eger)?|int64|logical|longchar|memptr)\\b",
+      "name": "storage.type.source.abl"
+    },
+    "defineKeywords": {
+      "comment": "define statment keywords (others)",
+      "match": "(?i)\\b(format|initial|no-undo)\\b",
+      "name": "keyword.other.source.abl"
+    },
+    "fileField": {
+      "comment": "file.field referencesc",
+      "match": "(?i)\\b([a-zA-Z0-9-]+\\.[a-zA-Z0-9_-]+)\\b",
+      "name": "text.other.source.abl"
+    },
+    "keywordAsLike": {
+      "comment": "keywords - as or like",
+      "match": "(?i)\\b(as|like)\\b",
+      "name": "constant.other.source.abl"
+    },
+    "objectStatus": {
+      "match": "(?i)(private|protected|public)\\s+",
+      "captures": {
+        "1": {"name": "storage.modifier.source.abl"}
+      }
+    },
+    "quotedStrings": {
+      "comment": "quoted strings",
+      "patterns": [
+        {
+          "comment": "Single quoted string",
+          "match": "('(?:'|.)*?')",
+          "name": "string.single.source.abl"
+        },
+        {
+          "comment": "Double quoted string",
+          "match": "(\"(?:\"|.)*?\")",
+          "name": "string.double.source.abl"
+        }
+      ]
+    },
+    "variableNames": {
+      "comment": "variable & properties - Synergy naming conventions",
+      "match": "(?i)\\b(h|i|lv|o|p|sv|v)(-|[A-Z])[a-zA-Z0-9_-]+\\b",
+      "name": "variable.other.synergy.source.abl"
+    }
+
+  },
+  "uuid": "3bcebd60-f6cc-404f-930a-528f32956502"
+}

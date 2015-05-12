@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[
+FUNCTION ${1:name} RETURNS ${2:datatype} (${3:Arguments}) FORWARD.
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>function forward</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.Progress\ ABL</scope> -->
+	<description>Insère une entête de fonction</description>
+</snippet>

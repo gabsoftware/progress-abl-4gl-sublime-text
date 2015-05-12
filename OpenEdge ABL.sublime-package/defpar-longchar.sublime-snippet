@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+DEFINE ${1:INPUT} PARAMETER pr_lc_${2:name} AS LONGCHAR NO-UNDO.
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>defpar longchar</tabTrigger>
+	<tabTrigger>dplc</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.Progress\ ABL</scope> -->
+
+	<description>Insère un paramètre de type LONGCHAR</description>
+</snippet>
