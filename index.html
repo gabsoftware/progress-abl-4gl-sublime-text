@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Progress-abl-4gl-sublime-text by gabsoftware</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Progress-abl-4gl-sublime-text</h1>
+        <h2>Progress ABL 4GL support for Sublime Text 3</h2>
+        <a href="https://github.com/gabsoftware/progress-abl-4gl-sublime-text" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="progress-abl-4gl-support-for-sublime-text-3" class="anchor" href="#progress-abl-4gl-support-for-sublime-text-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Progress ABL 4GL support for Sublime Text 3</h1>
+
+<p>By <a href="http://www.gabsoftware.com/">GabSoftware</a></p>
+
+<p>If you want to add support for <a href="http://www.progress.com/">Progress</a> ABL 4GL in <a href="http://www.sublimetext.com/">Sublime Text</a>, you can use this syntax plugin.
+A ready-to-install package is located in the <code>dist</code> directory.</p>
+
+<h2>
+<a id="building" class="anchor" href="#building" aria-hidden="true"><span class="octicon octicon-link"></span></a>Building</h2>
+
+<ol>
+<li>Zip the <strong>content</strong> of the OpenEdge ABL.sublime-package directory (not the directory itself)</li>
+<li>Rename the archive to "OpenEdge ABL.sublime-package" (without .zip in the end of the file name)</li>
+</ol>
+
+<h2>
+<a id="installing-or-modifying" class="anchor" href="#installing-or-modifying" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installing or modifying</h2>
+
+<ol>
+<li>Close Sublime Text if necessary</li>
+<li>Locate the data directory of Sublime Text 3 :
+
+<ul>
+<li>On Windows, it is located in <code>%APPDATA%\Sublime Text 3</code>
+</li>
+<li>On Linux, it is located in <code>~/.config/sublime-text-3</code>
+</li>
+<li>On OS X, it is located in <code>~/Library/Application Support/Sublime Text 3</code>
+</li>
+</ul>
+</li>
+<li>In the data directory, place the package <code>OpenEdge ABL.sublime-package</code> in the <code>Installed Packages</code> directory.</li>
+<li>In the data directory (but in <code>%LOCALAPPDATA%\Sublime Text 3</code> in Windows!), delete the <code>Cache/OpenEdge ABL</code> directory</li>
+<li>Restart Sublime Text</li>
+<li>You may need to open each progress file type (.p, .cls, .i, .w...) and associate them with the new syntax scheme:
+<code>View &gt; Syntax &gt; Open all with current extension as... &gt; OpenEdge ABL</code>
+</li>
+</ol>
+
+<h2>
+<a id="check-syntax-support" class="anchor" href="#check-syntax-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>"Check Syntax" support</h2>
+
+<p>It is possible to get the "Check Syntax" feature of OpenEdge working in Sublime Text. To do so, you can use the provided files in the <code>CheckSyntax</code> directory :</p>
+
+<ol>
+<li>Close Sublime Text</li>
+<li>Place the <code>syntax.p</code> file in a directory or your choice, for example <code>C:\syntax</code>
+</li>
+<li>Copy the files <code>ABL.sublime-build.example</code> and <code>ABL.sublime-settings</code> and paste them in the data directory, in <code>Packages\User</code>
+</li>
+<li>Rename <code>ABL.sublime-build.example</code> to <code>ABL.sublime-build</code>
+</li>
+<li>Modify <code>ABL.sublime-build</code> to reflect your configuration</li>
+<li>Restart Sublime Text</li>
+<li>You can now check the syntax of Progress ABL source files by hitting CTRL + B</li>
+</ol>
+
+<h2>
+<a id="notes" class="anchor" href="#notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes</h2>
+
+<p>This product is not supported by Progress.</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/gabsoftware/progress-abl-4gl-sublime-text/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/gabsoftware/progress-abl-4gl-sublime-text/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/gabsoftware/progress-abl-4gl-sublime-text"></a> is maintained by <a href="https://github.com/gabsoftware">gabsoftware</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
