@@ -1,12 +1,14 @@
-# progress-abl-4gl-sublime-text
-Progress ABL 4GL support for Sublime Text 3
+# Progress ABL 4GL support for Sublime Text 3
+
 By GabSoftware
 
-== Building ==
-1. Zip the *content* of the OpenEdge ABL.sublime-package directory
-2. Rename it "OpenEdge ABL.sublime-package" (without .zip)
+## Building
 
-== Installing or modifying ==
+1. Zip the **content** of the OpenEdge ABL.sublime-package directory (not the directory itself)
+2. Rename the archive to "OpenEdge ABL.sublime-package" (without .zip in the end of the file name)
+
+## Installing or modifying
+
 1. Close Sublime Text if necessary
 2. Locate the data directory of Sublime Text 3 :
    * On Windows, it is located in `%APPDATA%\Sublime Text 3`
@@ -16,10 +18,12 @@ By GabSoftware
 4. In the data directory, delete the `Cache/OpenEdge ABL` directory
 5. Restart Sublime Text
 6. You may need to open each progress file type (.p, .cls, .i, .w...) and associate them with the new syntax scheme:
-   * `View > Syntax > Open all with current extension as... > OpenEdge ABL`
+   `View > Syntax > Open all with current extension as... > OpenEdge ABL`
 
-== "Check Syntax" support
+## "Check Syntax" support
+
 It is possible to get the "Check Syntax" feature of OpenEdge working in Sublime Text. To do so, you can use the provided `syntax.p` and `ABL.sublime-build` files :
+
 1. Close Sublime Text
 2. Place the `syntax.p` file in a directory, for example `C:\syntax`
 3. Copy the file `ABL.sublime-build.example` and paste it as `ABL.sublime-build` in the data directory, in `Packages\User`
