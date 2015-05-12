@@ -1,6 +1,6 @@
 # Progress ABL 4GL support for Sublime Text 3
 
-By [GabSoftware](www.gabsoftware.com)
+By [GabSoftware](http://www.gabsoftware.com/)
 
 ## Building
 
