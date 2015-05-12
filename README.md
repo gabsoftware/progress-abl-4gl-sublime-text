@@ -2,6 +2,8 @@
 
 By [GabSoftware](http://www.gabsoftware.com/)
 
+If you want to add support for [Progress](http://www.progress.com/) ABL 4GL in [Sublime Text](http://www.sublimetext.com/), you can use this syntax plugin.
+
 ## Building
 
 1. Zip the **content** of the OpenEdge ABL.sublime-package directory (not the directory itself)
