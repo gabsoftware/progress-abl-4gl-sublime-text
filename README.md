@@ -3,6 +3,7 @@
 By [GabSoftware](http://www.gabsoftware.com/)
 
 If you want to add support for [Progress](http://www.progress.com/) ABL 4GL in [Sublime Text](http://www.sublimetext.com/), you can use this syntax plugin.
+A ready-to-install package is located in the `dist` directory.
 
 ## Building
 
@@ -16,7 +17,7 @@ If you want to add support for [Progress](http://www.progress.com/) ABL 4GL in [
    * On Windows, it is located in `%APPDATA%\Sublime Text 3`
    * On Linux, it is located in `~/.config/sublime-text-3`
    * On OS X, it is located in `~/Library/Application Support/Sublime Text 3`
-3. In the data directory, place the package in the `Installed Packages` directory.
+3. In the data directory, place the package `OpenEdge ABL.sublime-package` in the `Installed Packages` directory.
 4. In the data directory, delete the `Cache/OpenEdge ABL` directory
 5. Restart Sublime Text
 6. You may need to open each progress file type (.p, .cls, .i, .w...) and associate them with the new syntax scheme:

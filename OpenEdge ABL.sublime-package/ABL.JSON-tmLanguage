@@ -49,7 +49,7 @@
     },
     {
       "comment": "constructor/destructor method",
-      "match": "(?i)(constructor|destructor)\\s+((private|protected|public)\\s+)?([a-z]+)",
+      "match": "(?i)(constructor|destructor)\\s+((private|protected|public)\\s+)?((static)\\s+)?([a-z]+)",
       "name": "meta.function.source.abl",
       "captures": {
         "1": { "name": "entity.name.function.abl" },
@@ -79,7 +79,7 @@
     },
     {
       "comment": "method",
-      "begin": "(?i)(method)\\s+(override|private|protected|public)\\s+([a-zA-Z0-9.]+)\\s+([a-zA-Z]+)",
+      "begin": "(?i)(method)\\s+((override|private|protected|public)\\s+)?((static)\\s+)?([a-zA-Z0-9.]+)\\s+([a-zA-Z]+)",
       "beginCaptures": {
         "1": { "name": "keyword.control.source.abl" },
         "2": { "name": "storage.modifier.abl" },
@@ -175,7 +175,7 @@
     },
     {
       "comment": "Other keywords - C",
-      "match": "(?i)\\b(call|can-do|can-query|can-set|caps|cast|catch|class|choose|chr|clear|close|codepage-convert|color|combo-box|compare|compile|save|connect|connected|count-of|create|current-changed|current-language|current-result-row|current-value)\\b",
+      "match": "(?i)\\b(call|can-do|can-query|can-set|caps|cast|catch|class|choose|chr|clear|close|codepage-convert|color|combo-box|compare|compile|compiler|save|connect|connected|count-of|create|current-changed|current-language|current-result-row|current-value)\\b",
       "name": "keyword.other.class.source.abl"
     },
     {
@@ -215,7 +215,7 @@
     },
     {
       "comment": "Other keywords - P",
-      "match": "(?i)\\b(page|page-number|page-size|pause|pdbname|preselect|proc-handle|proc-status|process events|program-name|projpt-for|promsgs|propath|proversion|publsih|put cursor|put screen|put-(bits|bytes|byte|double|float|key-value|long|short|string|unsigned-short))\\b",
+      "match": "(?i)\\b(page|page-number|page-size|pause|pdbname|preselect|proc-handle|proc-status|process events|program-name|projpt-for|promsgs|propath|proversion|publsih|put cursor|put screen|put-(bits|bytes|byte|double|float|key-value|long|session|short|string|unsigned-short))\\b",
       "name": "keyword.other.class.source.abl"
     },
     {

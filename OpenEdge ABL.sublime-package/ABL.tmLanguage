@@ -113,7 +113,7 @@
 			<key>comment</key>
 			<string>constructor/destructor method</string>
 			<key>match</key>
-			<string>(?i)(constructor|destructor)\s+((private|protected|public)\s+)?([a-z]+)</string>
+			<string>(?i)(constructor|destructor)\s+((private|protected|public)\s+)?((static)\s+)?([a-z]+)</string>
 			<key>name</key>
 			<string>meta.function.source.abl</string>
 		</dict>
@@ -166,7 +166,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?i)(method)\s+(override|private|protected|public)\s+([a-zA-Z0-9.]+)\s+([a-zA-Z]+)</string>
+			<string>(?i)(method)\s+((override|private|protected|public)\s+)?((static)\s+)?([a-zA-Z0-9.]+)\s+([a-zA-Z]+)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -356,7 +356,7 @@
 			<key>comment</key>
 			<string>Other keywords - C</string>
 			<key>match</key>
-			<string>(?i)\b(call|can-do|can-query|can-set|caps|cast|catch|class|choose|chr|clear|close|codepage-convert|color|combo-box|compare|compile|save|connect|connected|count-of|create|current-changed|current-language|current-result-row|current-value)\b</string>
+			<string>(?i)\b(call|can-do|can-query|can-set|caps|cast|catch|class|choose|chr|clear|close|codepage-convert|color|combo-box|compare|compile|compiler|save|connect|connected|count-of|create|current-changed|current-language|current-result-row|current-value)\b</string>
 			<key>name</key>
 			<string>keyword.other.class.source.abl</string>
 		</dict>
@@ -420,7 +420,7 @@
 			<key>comment</key>
 			<string>Other keywords - P</string>
 			<key>match</key>
-			<string>(?i)\b(page|page-number|page-size|pause|pdbname|preselect|proc-handle|proc-status|process events|program-name|projpt-for|promsgs|propath|proversion|publsih|put cursor|put screen|put-(bits|bytes|byte|double|float|key-value|long|short|string|unsigned-short))\b</string>
+			<string>(?i)\b(page|page-number|page-size|pause|pdbname|preselect|proc-handle|proc-status|process events|program-name|projpt-for|promsgs|propath|proversion|publsih|put cursor|put screen|put-(bits|bytes|byte|double|float|key-value|long|session|short|string|unsigned-short))\b</string>
 			<key>name</key>
 			<string>keyword.other.class.source.abl</string>
 		</dict>
@@ -490,7 +490,7 @@
 		</dict>
 		<dict>
 			<key>comment</key>
-			<string>error and error-statu attributes &amp; methods</string>
+			<string>error and error-status attributes &amp; methods</string>
 			<key>match</key>
 			<string>(?i)(error-status|error|no-error|num-message|type|get-message|get-number)|(:(apperror|syserror|getMessage|numMessages|returnValue))\b</string>
 			<key>name</key>
