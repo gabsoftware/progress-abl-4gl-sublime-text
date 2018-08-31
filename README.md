@@ -23,17 +23,48 @@ A ready-to-install package is located in the `dist` directory.
 6. You may need to open each progress file type (.p, .cls, .i, .w...) and associate them with the new syntax scheme:
    `View > Syntax > Open all with current extension as... > OpenEdge ABL`
 
-## "Check Syntax" support
+## "Check Syntax,Compile,Run" support with auto capitalization of keywords
 
-It is possible to get the "Check Syntax" feature of OpenEdge working in Sublime Text. To do so, you can use the provided files in the `CheckSyntax` directory :
+It is possible to get the "Check Syntax,Compile,Run" feature of OpenEdge working in Sublime Text. To do so, you can follow these steps :
 
-1. Close Sublime Text
-2. Place the `syntax.p` file in a directory or your choice, for example `C:\syntax`
-3. Copy the files `ABL.sublime-build.example` and `ABL.sublime-settings` and paste them in the data directory, in `Packages\User`
-4. Rename `ABL.sublime-build.example` to `ABL.sublime-build`
-5. Modify `ABL.sublime-build` to reflect your configuration
-6. Restart Sublime Text
-7. You can now check the syntax of Progress ABL source files by hitting CTRL + B
+1. Makes sure you have saved your project, this creates a <project_name>.sublime-project
+2. In this file a json node with the following options
+	{
+		"folders":
+		[
+			{
+				"path": "."
+			}
+		],
+		"settings":
+		{
+			"abl":
+			{
+				"dlc": "/path/to/dlc",  // Path to your DLC 
+				"hooks":
+				{
+					"pre": "/code/to/run/pre.p" // This code will be run before compile,checking syntax or running but after propath bellow has been set
+				},
+				"pf": "conf/sublime.pf", // this path can be fully qualified or relative to the sublime-project file
+				"propath":
+				[
+					"src/module1", // these paths can be fully qualified or relative to the sublime-project file
+					"src/module2"
+				],
+				"uppercase_keywords": true // Do you want sublime to capitalize ABL Keywords
+			}
+		}
+	}
+
+3. Hitting CTRL + SHIFT + B will give you a list
+	- ABL                  : checks syntax
+	- ABL - Check Syntax   : checks syntax
+	- ABL - Compile        : compiles
+	- ABL - Run Batch      : runs code in an \_progres -b session and returns messages to the sublime console
+	- ABL - Run GUI        : runs the code in an prowin/32.exe
+3. You can now repeat your last choice by hitting CTRL + B
+
+This doesnt work on untitled buffers in sublime, the buffer must have a filename
 
 ## Notes
 
