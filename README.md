@@ -28,34 +28,35 @@ A ready-to-install package is located in the `dist` directory.
 It is possible to get the "Check Syntax,Compile,Run" feature of OpenEdge working in Sublime Text. To do so, you can follow these steps :
 
 1. Makes sure you have saved your project, this creates a <project_name>.sublime-project
-2. In this file a json node with the following options
-	{
-		"folders":
-		[
-			{
-				"path": "."
-			}
-		],
-		"settings":
-		{
-			"abl":
-			{
-				"dlc": "/path/to/dlc",  // Path to your DLC 
-				"hooks":
-				{
-					"pre": "/code/to/run/pre.p" // This code will be run before compile,checking syntax or running but after propath bellow has been set
-				},
-				"pf": "conf/sublime.pf", // this path can be fully qualified or relative to the sublime-project file
-				"propath":
-				[
-					"src/module1", // these paths can be fully qualified or relative to the sublime-project file
-					"src/module2"
-				],
-				"uppercase_keywords": true // Do you want sublime to capitalize ABL Keywords
-			}
-		}
+2. Update your <project_name>.sublime-project to add the settings.abl node
+```
+	{  
+		"folders":  
+		[  
+			{  
+				"path": "."  
+			}  
+		],  
+		"settings":  
+		{  
+			"abl":  
+			{  
+				"dlc": "/path/to/dlc",  // Path to your DLC   
+				"hooks":  
+				{  
+					"pre": "/code/to/run/pre.p" // This code will be run before compile,checking syntax or running but after propath bellow has been set  
+				},  
+				"pf": "conf/sublime.pf", // this path can be fully qualified or relative to the sublime-project file  
+				"propath":  
+				[  
+					"src/module1", // these paths can be fully qualified or relative to the sublime-project file  
+					"src/module2"  
+				],  
+				"uppercase_keywords": true // Do you want sublime to capitalize ABL Keywords  
+			}  
+		}  
 	}
-
+```
 3. Hitting CTRL + SHIFT + B will give you a list
 	- ABL                  : checks syntax
 	- ABL - Check Syntax   : checks syntax
