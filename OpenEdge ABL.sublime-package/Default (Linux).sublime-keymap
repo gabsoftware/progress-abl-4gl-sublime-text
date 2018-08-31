@@ -1,0 +1,26 @@
+[
+	{ "keys": [" "], "command": "abl_uppercase",
+        "context":
+        [
+            { "key": "selector", "operator": "equal", "operand": "source.abl", "match_all": true },
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "scope_before_cursor", "operator": "equal", "operand": ["keyword", "storage", "constant"], "match_all": true },
+        ], "args": {"keystroke": " " }
+    },
+    { "keys": ["."], "command": "abl_uppercase",
+        "context":
+        [
+            { "key": "selector", "operator": "equal", "operand": "source.abl", "match_all": true },
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "scope_before_cursor", "operator": "equal", "operand": ["keyword", "storage", "constant"], "match_all": true },
+        ], "args": {"keystroke": "." }
+    },
+    { "keys": [":"], "command": "abl_uppercase",
+        "context":
+        [
+            { "key": "selector", "operator": "equal", "operand": "source.abl", "match_all": true },
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "scope_before_cursor", "operator": "equal", "operand": ["keyword", "storage", "constant"], "match_all": true },
+        ], "args": {"keystroke": ":" }
+    },
+]

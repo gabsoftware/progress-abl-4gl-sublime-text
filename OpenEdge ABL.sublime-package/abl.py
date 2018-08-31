@@ -38,20 +38,19 @@ class AblCommand(sublime_plugin.WindowCommand):
         working_dir = vars['file_path']
         project_dir, project_file = os.path.split(self.window.project_file_name())
         
-        # A lock is used to ensure only one thread is
-        # touching the output panel at a time
-        with self.panel_lock:
-            # Creating the panel implicitly clears any previous contents
-            self.panel = self.window.create_output_panel('exec')
-
-            settings = self.panel.settings()
-            settings.set(
-                'result_file_regex',
-                r'(?:^(.+?):([0-9]+):([0-9]+)\s(.+)$)*'
-            )
-            settings.set('result_base_dir', working_dir)
-
-            self.window.run_command('show_panel', {'panel': 'output.exec'})
+        if action != 'run-gui':
+            with self.panel_lock:
+                # Creating the panel implicitly clears any previous contents
+                self.panel = self.window.create_output_panel('exec')
+    
+                settings = self.panel.settings()
+                settings.set(
+                    'result_file_regex',
+                    r'(?:^(.+?):([0-9]+):([0-9]+)\s(.+)$)*'
+                )
+                settings.set('result_base_dir', working_dir)
+    
+                self.window.run_command('show_panel', {'panel': 'output.exec'})
 
         if self.proc is not None:
             self.proc.terminate()
@@ -75,18 +74,36 @@ class AblCommand(sublime_plugin.WindowCommand):
 
         abl_settings['action'] = action
 
-        if action == 'check_syntax' or action == 'compile' or action == 'run':
+        if action == 'check_syntax' or action == 'compile' or action == 'run-batch' or action == 'run-gui':
             abl_settings['filename'] = os.path.join(vars['file_path'], vars['file_name'])
 
         abl_settings_file = os.path.join(tempfile.gettempdir(), str(uuid.uuid4()) + '.json')
         with open(abl_settings_file, 'w') as outfile:
             json.dump(abl_settings, outfile)    
 
-        _progres = os.path.join(abl_settings['dlc'], 'bin', '_progres')
-        if (os.name != "posix"):
-            _progres += ".exe" # Does windows work without this? Who knows
+        args = []
+        if action == 'run-gui':
+            if (os.name != "posix"):
+                if os.path.exists(os.path.join(abl_settings['dlc'], 'bin', 'prowin.exe')):
+                    _progres = os.path.join(abl_settings['dlc'], 'bin', 'prowin.exe')
+                else:
+                    _progres = os.path.join(abl_settings['dlc'], 'bin', 'prowin32.exe')
+            else:
+                self.queue_write('\n[GUI not supported in unix]')
+                return
 
-        args = [_progres, '-1', '-b']
+            args.append(_progres)
+
+        else:
+            _progres = os.path.join(abl_settings['dlc'], 'bin', '_progres')
+            if (os.name != "posix"):
+                _progres += ".exe" # Does windows work without this? Who knows
+
+            args.append(_progres)
+            args.append('-1')
+            args.append('-b')
+
+        
 
         # Run the entry point
         args.append('-p')
@@ -111,24 +128,32 @@ class AblCommand(sublime_plugin.WindowCommand):
         if (os.name == "posix"):
             abl_env["TERM"] = 'xterm'
 
-        self.proc = subprocess.Popen(
-            args,
-            env=abl_env,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            cwd=working_dir
-        )
-        self.killed = False
-
-        thread = threading.Thread(
-            target=self.read_handle,
-            args=(self.proc.stdout,)
-        )
-        thread.start()
-        thread.join()
-
-        if os.path.exists(abl_settings_file):
-            os.remove(abl_settings_file)
+        if action == 'run-gui':
+            self.proc = subprocess.Popen(
+                args,
+                env=abl_env,
+                cwd=working_dir
+            )
+            
+        else:
+            self.proc = subprocess.Popen(
+                args,
+                env=abl_env,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                cwd=working_dir
+            )
+            self.killed = False
+    
+            thread = threading.Thread(
+                target=self.read_handle,
+                args=(self.proc.stdout,)
+            )
+            thread.start()
+            thread.join()
+            # Removing this breaks the gui run, hopefully windows cleans up its temp folders?
+            if os.path.exists(abl_settings_file):
+                os.remove(abl_settings_file)
         
     def finished(self):
         stylesheet = '''

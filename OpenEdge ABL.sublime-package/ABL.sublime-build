@@ -13,8 +13,12 @@
             "action": "compile"
         },
         {
-            "name": "Run",
-            "action": "run"
+            "name": "Run - Batch",
+            "action": "run-batch"
+        },
+        {
+            "name": "Run - GUI",
+            "action": "run-gui"
         }
     ]
 }

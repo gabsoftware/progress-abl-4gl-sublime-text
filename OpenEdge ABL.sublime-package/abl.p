@@ -20,6 +20,8 @@ COPY-LOB FROM FILE SESSION:PARAMETER To cSettingsData.
 oABLSettingsParser   = NEW ObjectModelParser().
 oABLSettings         = CAST(oABLSettingsParser:Parse(cSettingsData), JsonObject).
 
+cAction = oABLSettings:getCharacter("action":U).
+
 /* If we had db's lets cnnect them */
 IF oABLSettings:has("db":U)
 THEN
@@ -59,8 +61,6 @@ DO:
 
 END.
 
-cAction = oABLSettings:getCharacter("action":U).
-
 CASE cAction:
 
   WHEN "check_syntax":U OR
@@ -68,7 +68,8 @@ CASE cAction:
   THEN
     RUN abl_compile (INPUT (cAction = "compile":U), OUTPUT lCompiles).
 
-  WHEN "run":U
+  WHEN "run-batch":U OR
+  WHEN "run-gui":U
   THEN
   DO:
     RUN abl_compile (INPUT TRUE, OUTPUT lCompiles).
