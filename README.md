@@ -52,6 +52,10 @@ It is possible to get the "Check Syntax,Compile,Run" feature of OpenEdge working
 					"src/module1", // these paths can be fully qualified or relative to the sublime-project file  
 					"src/module2"  
 				],  
+				"db": [
+					"-db /path/to/db -ld somedb -1", // DB connection strings
+					"-db /path/to/db2 -ld somedb2 -1"
+				],
 				"uppercase_keywords": true // Do you want sublime to capitalize ABL Keywords  
 			}  
 		}  
