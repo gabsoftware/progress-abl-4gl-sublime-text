@@ -57,6 +57,11 @@ class AblCommand(sublime_plugin.WindowCommand):
             self.proc.terminate()
             self.proc = None
 
+        abl_p = os.path.join(sublime.cache_path(), 'OpenEdge ABL', 'abl.p')
+        if not os.path.exists(abl_p):
+            with open(abl_p, 'w') as outfile:
+                outfile.write(sublime.load_resource('Packages/OpenEdge ABL/abl.p'))
+
         abl_settings = view_settings.get('abl');
 
         # Resolve relative paths to project
@@ -85,7 +90,7 @@ class AblCommand(sublime_plugin.WindowCommand):
 
         # Run the entry point
         args.append('-p')
-        args.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'abl.p'))
+        args.append(abl_p)
 
         # Set the PF file
         pf_file = abl_settings['pf']
