@@ -25,6 +25,8 @@ A ready-to-install package is located in the `dist` directory.
 
 ## "Check Syntax,Compile,Run" support with auto capitalization of keywords
 
+**Note: this isonly available starting from Progress 11.x**
+
 It is possible to get the "Check Syntax,Compile,Run" feature of OpenEdge working in Sublime Text. To do so, you can follow these steps :
 
 1. Makes sure you have saved your project, this creates a <project_name>.sublime-project
