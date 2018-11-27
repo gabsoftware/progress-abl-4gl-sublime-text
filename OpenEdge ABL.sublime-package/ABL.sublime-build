@@ -1,0 +1,24 @@
+{
+    "target": "abl",
+    "selector": "source.abl",
+    "cancel": {"kill": true},
+    "action": "check_syntax",
+    "variants": [
+        {
+            "name": "Check Syntax",
+            "action": "check_syntax"
+        },
+        {
+            "name": "Compile",
+            "action": "compile"
+        },
+        {
+            "name": "Run - Batch",
+            "action": "run-batch"
+        },
+        {
+            "name": "Run - GUI",
+            "action": "run-gui"
+        }
+    ]
+}
